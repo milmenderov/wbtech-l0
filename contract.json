@@ -1,0 +1,51 @@
+{                       // таблица order
+  "order_uid": "b563feb7b2b84b6test",   // id ордера          - string #
+  "track_number": "WBILMTESTTRACK",     // трек номер         - string ##
+  "entry": "WBIL",                      // ??                 - string
+  "delivery": {       // таблица delivery
+    "name": "Test Testov",
+    "phone": "+9720000000",
+    "zip": "2639809",
+    "city": "Kiryat Mozkin",
+    "address": "Ploshad Mira 15",
+    "region": "Kraiot",
+    "email": "test@gmail.com"
+  },
+  "payment": {        // таблица payment
+    "transaction": "b563feb7b2b84b6test", // id ордера    - string #
+    "request_id": "",                     // ??           - string
+    "currency": "USD",                    // валюта       - string
+    "provider": "wbpay",                  // провайдер    - string
+    "amount": 1817,                       // сумма        - number
+    "payment_dt": 1637907727,             // дата оплаты  - number
+    "bank": "alpha",                      // банк         - string
+    "delivery_cost": 1500,                // стоимость    - number
+    "goods_total": 317,                   // всего товар  - number
+    "custom_fee": 0                       // ??           - number
+  },
+  "items": [          // массив товаров нужно уметь обрабатывать несколько товаров в заказе
+    {                 // таблица items
+      "chrt_id": 9934930,                 // ??               - number
+      "track_number": "WBILMTESTTRACK",   // трек номер       - string ##
+      "price": 453,                       // цена             - number
+      "rid": "ab4219087a764ae0btest",     // ??               - string
+      "name": "Mascaras",                 // название товара  - string
+      "sale": 30,                         // скидка           - number
+      "size": "0",                        // размер           - string
+      "total_price": 317,                 // общая цена       - number
+      "nm_id": 2389212,                   // ??               - number
+      "brand": "Vivienne Sabo",           // бренд            - string
+      "status": 202                       // ??               - number
+    }
+  ],
+  "locale": "en",                         // язык             - string
+  "internal_signature": "",               // ??               - string
+  "customer_id": "test",                  // id клиента       - string
+  "delivery_service": "meest",            // служба доставки  - string
+  "shardkey": "9",                        // ??               - string
+  "sm_id": 99,                            // ??               - number
+  "date_created": "2021-11-26T06:22:19Z", // дата создания    - string
+  "oof_shard": "1"                        // ??               - string
+}
+
+
