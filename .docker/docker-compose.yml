@@ -27,3 +27,10 @@ services:
       - DB_PASS=qwerty
       - MIGRAT_CMD=up
     restart: no
+
+  nats:
+    image: nats-streaming:0.25.6
+    container_name: nats-streaming
+    ports:
+      - 4222:4222
+      - 8222:8222
