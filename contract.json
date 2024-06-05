@@ -1,8 +1,9 @@
-{                       // таблица order
-  "order_uid": "b563feb7b2b84b6test",   // id ордера          - string #
-  "track_number": "WBILMTESTTRACK",     // трек номер         - string ##
-  "entry": "WBIL",                      // ??                 - string
-  "delivery": {       // таблица delivery
+
+{
+  "order_uid": "b563feasdb7b2b84b6test",
+  "track_number": "WBILMTESTTRACK",
+  "entry": "WBIL",
+  "delivery": {
     "name": "Test Testov",
     "phone": "+9720000000",
     "zip": "2639809",
@@ -11,41 +12,39 @@
     "region": "Kraiot",
     "email": "test@gmail.com"
   },
-  "payment": {        // таблица payment
-    "transaction": "b563feb7b2b84b6test", // id ордера    - string #
-    "request_id": "",                     // ??           - string
-    "currency": "USD",                    // валюта       - string
-    "provider": "wbpay",                  // провайдер    - string
-    "amount": 1817,                       // сумма        - number
-    "payment_dt": 1637907727,             // дата оплаты  - number
-    "bank": "alpha",                      // банк         - string
-    "delivery_cost": 1500,                // стоимость    - number
-    "goods_total": 317,                   // всего товар  - number
-    "custom_fee": 0                       // ??           - number
+  "payment": {
+    "transaction": "b563feasdb7b2b84b6test",
+    "request_id": "",
+    "currency": "USD",
+    "provider": "wbpay",
+    "amount": 1817,
+    "payment_dt": 1637907727,
+    "bank": "alpha",
+    "delivery_cost": 1500,
+    "goods_total": 317,
+    "custom_fee": 0
   },
-  "items": [          // массив товаров нужно уметь обрабатывать несколько товаров в заказе
-    {                 // таблица items
-      "chrt_id": 9934930,                 // ??               - number
-      "track_number": "WBILMTESTTRACK",   // трек номер       - string ##
-      "price": 453,                       // цена             - number
-      "rid": "ab4219087a764ae0btest",     // ??               - string
-      "name": "Mascaras",                 // название товара  - string
-      "sale": 30,                         // скидка           - number
-      "size": "0",                        // размер           - string
-      "total_price": 317,                 // общая цена       - number
-      "nm_id": 2389212,                   // ??               - number
-      "brand": "Vivienne Sabo",           // бренд            - string
-      "status": 202                       // ??               - number
+  "items": [
+    {
+      "chrt_id": 9934930,
+      "track_number": "WBILMTESTTRACK",
+      "price": 453,
+      "rid": "ab4219087a764ae0btest",
+      "name": "Mascaras",
+      "sale": 30,
+      "size": "0",
+      "total_price": 317,
+      "nm_id": 2389212,
+      "brand": "Vivienne Sabo",
+      "status": 202
     }
   ],
-  "locale": "en",                         // язык             - string
-  "internal_signature": "",               // ??               - string
-  "customer_id": "test",                  // id клиента       - string
-  "delivery_service": "meest",            // служба доставки  - string
-  "shardkey": "9",                        // ??               - string
-  "sm_id": 99,                            // ??               - number
-  "date_created": "2021-11-26T06:22:19Z", // дата создания    - string
-  "oof_shard": "1"                        // ??               - string
+  "locale": "en",
+  "internal_signature": "",
+  "customer_id": "test",
+  "delivery_service": "meest",
+  "shardkey": "9",
+  "sm_id": 994,
+  "date_created": "2021-11-26T06:22:19Z",
+  "oof_shard": "1"
 }
-
-

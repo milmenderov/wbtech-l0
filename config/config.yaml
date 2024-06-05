@@ -1,0 +1,7 @@
+db:
+  username:
+  host:
+  port:
+  dbname:
+  password:
+  sslmode: "disable"
