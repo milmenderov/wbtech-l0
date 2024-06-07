@@ -1,38 +1,25 @@
 package main
 
 import (
-	"context"
-	"github.com/jackc/pgx/v4/pgxpool"
-	"io/ioutil"
 	"log"
 	"os"
+	"wbtech-l0/internal/config"
 	"wbtech-l0/internal/storage/postgres"
+	"wbtech-l0/nats"
 )
 
 func main() {
+	cfg := config.LoadConfig()
 
-	jsonFile, err := os.Open("contract.json")
+	dbpool, err := config.NewPostgresDB(cfg)
 	if err != nil {
-		log.Fatalf("Error opening JSON file: %v", err)
+		log.Fatalf("Failed to init storage: %v", err)
+		os.Exit(1)
 	}
-	defer jsonFile.Close()
-
-	byteValue, err := ioutil.ReadAll(jsonFile)
-	if err != nil {
-		log.Fatalf("Error reading JSON file: %v", err)
-	}
-
-	dsn := "postgres://postgres:qwerty@localhost:5432/postgres"
-	dbpool, err := pgxpool.Connect(context.Background(), dsn)
-	if err != nil {
-		log.Fatalf("Unable to connect to database: %v", err)
-	}
-	defer dbpool.Close()
-
 	storage := postgres.Storage{Db: dbpool}
 
-	if err := storage.SaveOrder(byteValue); err != nil {
-		log.Fatalf("Error saving order to database: %v", err)
+	err = nats.NatsConnect(storage)
+	if err != nil {
+		log.Fatalf("Ошибка подключения к NATS: %v", err)
 	}
-
 }
