@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Data</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>Order Data</h1>
+<form id="orderForm">
+    <label for="order_id">Order ID:</label>
+    <input type="text" id="order_id" name="order_id">
+    <button type="submit">Get Order Data</button>
+</form>
+<div id="result"></div>
+<script>
+    document.getElementById('orderForm').onsubmit = async function(event) {
+        event.preventDefault();
+        const orderID = document.getElementById('order_id').value;
+        const response = await fetch(`/get_order?order_id=${orderID}`);
+        const result = await response.json();
+        document.getElementById('result').innerText = JSON.stringify(result, null, 2);
+    };
+</script>
+</body>
+</html>

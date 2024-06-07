@@ -2,19 +2,18 @@ package config
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"github.com/jackc/pgx/v4/pgxpool"
-	"io/ioutil"
-	"log"
-	"os"
 )
 
-type Config struct {
-	Env      string `yaml:"env" env-default:"local"`
-	DbConfig `yaml:"db"`
+type NatsCfg struct {
+	url       string
+	subName   string
+	clusterId string
+	clientId  string
 }
-type DbConfig struct {
+
+type DBConfig struct {
 	Host     string
 	Port     string
 	Username string
@@ -23,27 +22,7 @@ type DbConfig struct {
 	SSLMode  string
 }
 
-func LoadConfig() *Config {
-	configPath := os.Getenv("CONFIG_PATH")
-	if configPath == "" {
-		log.Fatal("CONFIG_PATH is not set")
-	}
-	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		log.Fatalf("config file does nob exist: %s", configPath)
-	}
-	data, err := ioutil.ReadFile(configPath)
-	if err != nil {
-		log.Fatalf("error reading config file: %s", err)
-	}
-	var cfg Config
-	err = json.Unmarshal(data, &cfg)
-	if err != nil {
-		log.Fatalf("error parsing config file: %s", err)
-	}
-	return &cfg
-
-}
-func NewPostgresDB(cfg *Config) (*pgxpool.Pool, error) {
+func NewPostgresDB(cfg *DBConfig) (*pgxpool.Pool, error) {
 	dsn := fmt.Sprintf("postgres://%s:%s@%s:%s/%s?sslmode=%s",
 		cfg.Username, cfg.Password, cfg.Host, cfg.Port, cfg.DBName, cfg.SSLMode)
 

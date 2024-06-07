@@ -6,6 +6,6 @@ down:
 run:
 	docker-compose -f ./.docker/docker-compose.yml up -d
 test:
-	go run ./.docker/sub_script.go
+	go run ./.docker/pub_script.go
 all:	re
 

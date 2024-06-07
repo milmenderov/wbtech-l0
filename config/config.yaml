@@ -1,4 +1,4 @@
-env : "local"
+port: "8000"
 
 db:
   username:
@@ -7,3 +7,11 @@ db:
   dbname:
   password:
   sslmode: "disable"
+
+nats:
+  url:
+  subName:
+  clusterId:
+  clientId:
+
+

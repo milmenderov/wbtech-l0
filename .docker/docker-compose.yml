@@ -16,6 +16,7 @@ services:
       DB_NAME: postgres
       DB_PASSWORD: qwerty
       APP_PORT: "8080"
+
     volumes:
         - ../config:/app/config
 
