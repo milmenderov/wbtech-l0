@@ -1,5 +1,5 @@
 package get
 
 type OrderGetter interface {
-	GetOrder(request_id string) (string, error)
+	GetOrderHandler(OrderUID string) (string, error)
 }

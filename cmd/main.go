@@ -4,6 +4,7 @@ import (
 	"github.com/spf13/viper"
 	"log"
 	"os"
+	"wbtech-l0/cache"
 	"wbtech-l0/internal/config"
 	"wbtech-l0/internal/storage/postgres"
 	"wbtech-l0/nats"
@@ -13,8 +14,6 @@ func main() {
 	if err := initConfig(); err != nil {
 		log.Fatalf("error initializing config: %s", err.Error())
 	}
-	//log.Info("Starting http server")
-	//log.Debug("debug messages are enabled")
 
 	dbpool, err := config.NewPostgresDB(&config.DBConfig{
 		Host:     os.Getenv("DB_HOST"),
@@ -24,16 +23,25 @@ func main() {
 		Password: os.Getenv("DB_PASSWORD"),
 		SSLMode:  viper.GetString("db.sslmode"),
 	})
+	storage := &postgres.Storage{Db: dbpool}
+
 	if err != nil {
 		log.Fatalf("Failed to init storage: %v", err)
 		os.Exit(1)
 	}
-	storage := postgres.Storage{Db: dbpool}
+
+	err = cache.LoadOrdersToCache(storage)
+	if err != nil {
+		log.Fatalf("Error loading orders to cache: %v", err)
+	}
+
+	//cache.PrintCache()
 
 	err = nats.NatsConnect(storage)
 	if err != nil {
 		log.Fatalf("Error connect to NATS: %v", err)
 	}
+
 }
 
 func initConfig() error {

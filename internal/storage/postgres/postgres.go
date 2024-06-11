@@ -44,3 +44,27 @@ func (s *Storage) GetOrder(orderUID string) (string, error) {
 	}
 	return jsonData, nil
 }
+
+func (s *Storage) GetAllOrders() ([]string, error) {
+	query := `SELECT data FROM orders`
+	rows, err := s.Db.Query(context.Background(), query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var orders []string
+	for rows.Next() {
+		var jsonData string
+		if err := rows.Scan(&jsonData); err != nil {
+			return nil, err
+		}
+		orders = append(orders, jsonData)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return orders, nil
+}
