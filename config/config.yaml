@@ -8,10 +8,10 @@ db:
   password:
   sslmode: "disable"
 
-#nats:
-#  url:
-#  subName:
-#  clusterId:
-#  clientId:
+nats:
+  url:
+  subName:
+  clusterId:
+  clientId:
 
 

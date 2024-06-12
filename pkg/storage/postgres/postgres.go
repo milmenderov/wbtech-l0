@@ -33,17 +33,6 @@ func (s *Storage) SaveOrder(byteValue []byte) error {
 	log.Println("Order saved successfully with JSONB format")
 	return nil
 }
-func (s *Storage) GetOrder(orderUID string) (string, error) {
-
-	query := `SELECT data FROM orders WHERE data->>'order_uid' = $1`
-	var jsonData string
-
-	err := s.Db.QueryRow(context.Background(), query, orderUID).Scan(&jsonData)
-	if err != nil {
-		return "", err
-	}
-	return jsonData, nil
-}
 
 func (s *Storage) GetAllOrders() ([]string, error) {
 	query := `SELECT data FROM orders`

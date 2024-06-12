@@ -7,10 +7,10 @@ import (
 )
 
 type NatsCfg struct {
-	url       string
-	subName   string
-	clusterId string
-	clientId  string
+	Url       string
+	SubName   string
+	ClusterId string
+	ClientId  string
 }
 
 type DBConfig struct {
@@ -20,6 +20,11 @@ type DBConfig struct {
 	Password string
 	DBName   string
 	SSLMode  string
+}
+
+type HttpCfg struct {
+	Host string
+	Port string
 }
 
 func NewPostgresDB(cfg *DBConfig) (*pgxpool.Pool, error) {

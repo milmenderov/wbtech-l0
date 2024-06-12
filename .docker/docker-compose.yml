@@ -9,23 +9,25 @@ services:
     ports:
       - 8080:8080
     environment:
-      CONFIG_PATH: /app/config/config.yaml
       DB_HOST: db
       DB_PORT: "5432"
       DB_USER: postgres
       DB_NAME: postgres
       DB_PASSWORD: qwerty
       APP_PORT: "8080"
-
+      NATS_URL: nats://nats-streaming:4222
+      NATS_SUB_NAME: Orders
+      NATS_CLUSTER_ID: test-cluster
+      NATS_CLIENT_ID: client-sub
+      HTTP_PORT: "8080"
+      HTTP_HOST: "0.0.0.0"
     volumes:
-        - ../config:/app/config
+      - ../config:/app/config
 
   db:
     restart: always
     image: postgres:16-alpine3.20
     container_name: app_postgres
-    volumes:
-      - ./.database/postgres/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=qwerty
     ports:

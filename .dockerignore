@@ -1,0 +1,7 @@
+.docker
+.gitignore
+.dockerignore
+contract.json
+Makefile
+.idea
+.vscode

@@ -79,7 +79,7 @@ func randomString(length int) string {
 }
 
 func randomPhone() string {
-	return "+7" + strings.Repeat("0", 9)
+	return "+7" + strings.Repeat("0123456789", 9)
 }
 
 func randomEmail() string {
